@@ -7,6 +7,7 @@ import 'package:max_bit/screens/Product/products_screen.dart';
 import 'package:max_bit/screens/general/splash_screen.dart';
 import 'package:max_bit/screens/general/walk_through_screen.dart';
 import 'package:max_bit/screens/home/home_screen.dart';
+import 'package:max_bit/screens/orders/order_screen.dart';
 import 'package:max_bit/screens/test_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -31,17 +32,27 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case productsViewRoute:
       return PageTransition(
-        child: ProductsScreen(),
+        child: ProductsScreen(
+            title: arguments["title"],
+          category: arguments["category"],
+        ),
         type: PageTransitionType.fade,
       );
-    case productsViewRoute:
+    case productViewRoute:
       return PageTransition(
-        child: ProductScreen(),
+        child: ProductScreen(
+            product: arguments["product"],
+        ),
         type: PageTransitionType.fade,
       );
     case cartViewRoute:
       return PageTransition(
         child: CartScreen(),
+        type: PageTransitionType.fade,
+      );
+    case orderHistoryViewRoute:
+      return PageTransition(
+        child: OrderHistoryScreen(),
         type: PageTransitionType.fade,
       );
     case dashboardViewRoute:
