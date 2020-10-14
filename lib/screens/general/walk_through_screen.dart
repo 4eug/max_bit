@@ -29,7 +29,7 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
           homeViewRoute, (Route<dynamic> route) => false);
     } else {
       _controller.animateToPage(slideIndex + 1,
-          duration: Duration(milliseconds: 250), curve: Curves.linearToEaseOut);
+          duration: Duration(milliseconds: 450), curve: Curves.linearToEaseOut);
     }
   }
 

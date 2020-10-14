@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
   var categories = [
     {
       "title": "Fruits",
@@ -69,12 +71,12 @@ class _HomeScreenState extends State<HomeScreen> {
         size: 30.0,
         color: Colors.black,
       ),
-      onPressed: () {},
+      onPressed: () {
+        _scaffoldKey.currentState.openDrawer();
+      },
     );
 
-
-
-    final greeting = Text(
+    final title = Text(
       "Max bit",
       style: TextStyle(
         fontWeight: FontWeight.w500,
@@ -95,8 +97,68 @@ class _HomeScreenState extends State<HomeScreen> {
     var cartItems;
     cartItems = Provider.of<Cart>(context, listen: true).count;
     return Scaffold(
+      key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              height: SizeConfig.blockSizeVertical * 30,
+              child: Image.asset(
+                AvailableImages.appLogoTransparent["assetPath"],
+              ),
+            ),
+            InkWell(
+              onTap: () =>
+                  Navigator.popAndPushNamed(context, orderHistoryViewRoute),
+              child: Text(
+                "Orders",
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black54,
+                  fontSize: 30.0,
+                ),
+              ),
+            ),
+            Text(
+              "FAQs",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.black54,
+                fontSize: 30.0,
+              ),
+            ),
+            Text(
+              "About",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.black54,
+                fontSize: 30.0,
+              ),
+            ),
+            Text(
+              "Log Out",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.black54,
+                fontSize: 30.0,
+              ),
+            ),
+            IconButton(
+              icon: Icon(
+                Feather.arrow_left_circle,
+                size: 30.0,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
         elevation: 5,
         color: Colors.white,
@@ -131,7 +193,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             FlatButton(
               child: Icon(Feather.list),
-              onPressed: () => Navigator.pushNamed(context, orderHistoryViewRoute),
+              onPressed: () =>
+                  Navigator.pushNamed(context, orderHistoryViewRoute),
             ),
           ],
         ),
@@ -159,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: EdgeInsets.only(top: 20.0, left: 30.0),
                       child: Align(
                         alignment: Alignment.topLeft,
-                        child: greeting,
+                        child: title,
                       ),
                     ),
                     Padding(
