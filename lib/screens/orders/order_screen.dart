@@ -125,7 +125,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
               ),
             ),
             Text(
-              "${totalCost.toStringAsFixed(2)}",
+              "${(product.price * quantity).toStringAsFixed(2)}",
               style: TextStyle(
                 color: Colors.black54,
                 fontWeight: FontWeight.w500,
