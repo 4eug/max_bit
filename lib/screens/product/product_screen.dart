@@ -143,6 +143,17 @@ class _ProductScreenState extends State<ProductScreen> {
       ),
     );
 
+    final backButton = IconButton(
+      icon: Icon(
+        Feather.arrow_left,
+        size: 25.0,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -150,12 +161,23 @@ class _ProductScreenState extends State<ProductScreen> {
         child: Container(
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(right: 18.0, top: 10),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: cart,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 18.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: backButton,
+                    ),
+                  ),                  Padding(
+                    padding: EdgeInsets.only(right: 18.0, top: 10),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: cart,
+                    ),
+                  ),
+                ],
               ),
               Material(
                 color: Colors.white,

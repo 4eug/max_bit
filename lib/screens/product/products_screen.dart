@@ -64,6 +64,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
       ),
     );
 
+    final backButton = IconButton(
+      icon: Icon(
+        Feather.arrow_left,
+        size: 30.0,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
     final welcomeMessage = Text(
       "Select your favourite ${widget.title}",
       style: TextStyle(
@@ -90,23 +101,32 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(top: 20.0, left: 30.0),
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: title,
-                                ),
+                                padding: EdgeInsets.only(left: 10.0,),
+                                child: backButton,
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: 2.0, left: 30.0, bottom: 30.0),
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: welcomeMessage,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 20.0, left: 10.0),
+                                    child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: title,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 2.0, left: 10.0, bottom: 30.0),
+                                    child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: welcomeMessage,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -117,6 +137,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               child: cart,
                             ),
                           ),
+
                         ],
                       ),
                     ),

@@ -62,24 +62,28 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
             Material(
               elevation: 5,
               color: secondaryDark,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 18.0),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: backButton,
+              child: Container(
+                height: SizeConfig.blockSizeVertical * 25,
+                padding: EdgeInsets.only(top: 15.0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 18.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: backButton,
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: SizeConfig.blockSizeVertical * 15,
-                    padding: EdgeInsets.only(top: 25.0, left: 30),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: title,
+                    Container(
+                      height: SizeConfig.blockSizeVertical * 15,
+                      padding: EdgeInsets.only(top: 25.0, left: 30),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: title,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             _buildOrderList(context, orderHistory.reversed.toList())

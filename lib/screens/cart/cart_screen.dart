@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:max_bit/models/cart.dart';
 import 'package:max_bit/models/product.dart';
 import 'package:max_bit/utils/app_config.dart';
@@ -112,6 +113,17 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
 
+    final backButton = IconButton(
+      icon: Icon(
+        Feather.arrow_left,
+        size: 30.0,
+        color: Colors.white,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
     final welcomeMessage = Text(
       "Same day delivery",
       style: TextStyle(
@@ -143,6 +155,12 @@ class _CartScreenState extends State<CartScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
+                          padding: EdgeInsets.only(left: 30.0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: backButton,
+                          ),
+                        ),Padding(
                           padding: EdgeInsets.only(top: 20.0, left: 30.0),
                           child: Align(
                             alignment: Alignment.topLeft,
